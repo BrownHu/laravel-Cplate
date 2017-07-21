@@ -16,7 +16,7 @@
 <header class="am-topbar am-topbar-1 ">
     <div class="am-container-1">
         <div class="left hb-logo">
-            <a href="#"><img class="hb" src="../img/HENGWANG.png" alt="">
+            <a href="/"><img class="hb" src="../img/HENGWANG.png" alt="">
             <img class="word" src="../img/hw-word.png" alt=""></a>
         </div>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
@@ -36,12 +36,16 @@
             </div>
         </div>
     </div>
-    <div style="clear: both;"></div>
-</header>
-<!--head end-->
+    <div style="clear: both;">
 
+    </div>
+</header>
+@yield('topic')
 @yield('content')
 @yield('solution')
+@yield('customer')
+@yield('product')
+
 @yield('about')
 @yield('news')
 @yield('service')
@@ -54,7 +58,11 @@
     </a>
 </div>
 
-<!--end customer-->
+<!--end header-->
+
+
+
+
 <footer class="footer">
     <ul>
         <li class="am-u-lg-4 am-u-sm-12">

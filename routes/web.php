@@ -21,9 +21,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::group([],function (){
     Route::get('about',"HomeController@about");
-    Route::get('about',"HomeController@service");
-    Route::get('about',"HomeController@customer");
-    Route::get('about',"HomeController@news");
-    Route::get('about',"HomeController@employ");
-    Route::get('about',"HomeController@solution");
+    Route::get('service',"HomeController@service");
+    Route::get('customer',"HomeController@customer");
+    Route::get('news',"HomeController@news");
+    Route::get('employ',"HomeController@employ");
+    Route::get('product',"HomeController@product");
 });
