@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/home/amazeui.css')}}">
     <link rel="alternate icon" type="../img/hengwang-1.png" href="{{asset('img/hengwang-1.png')}}">
     <link rel="stylesheet" href="{{asset('css/home/mine.css')}}">
-    <title>Plate On Laravel</title>
+    <title>Crazycode-{{$Cname or "恒望科技"}}</title>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
         <div class="am-collapse am-topbar-collapse right " id="doc-topbar-collapse">
             <div class="am-topbar am-form-inline am-topbar-right">
                 <ul class="am-nav am-nav-pills am-topbar-nav hb-menu" role="search">
-                    <li class="hb-menu-active"><a href="solutions.html">解决方案</a></li>
+                    <li class="hb-menu-active"><a href="{{url('solution')}}">解决方案</a></li>
                     <li><a href="{{url('product')}}">产品展示 </a></li>
                     <li><a href="{{url('customer')}}">客户案例 </a></li>
                     <li><a href="{{url('service')}}">服务中心 </a></li>
@@ -45,7 +45,7 @@
 @yield('solution')
 @yield('customer')
 @yield('product')
-
+@yield('solution')
 @yield('about')
 @yield('news')
 @yield('service')
@@ -75,7 +75,6 @@
             </div>
             <div class="footphone">
                 <i class="am-icon-phone"></i>027-2323-232
-            </div>
             </div>
             <div class="hb-links"></div>
         </li>
@@ -108,8 +107,63 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <!--<![endif]-->
 <script src="{{asset('js/amazeui.min.js')}}"></script>
-<script>
-
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=sFKiirQ0rIlZ6dHjNUBHxXM6D2Bi962a"></script>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap(){
+        map = new BMap.Map("map");
+        map.centerAndZoom(new BMap.Point(116.966942,32.619657),15);
+    }
+    function setMapEvent(){
+        map.enableScrollWheelZoom();
+        map.enableKeyboard();
+        map.enableDragging();
+        map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+        target.addEventListener("click",function(){
+            target.openInfoWindow(window);
+        });
+    }
+    function addMapOverlay(){
+        var markers = [
+            {content:"淮南师范学院逸夫图书馆",title:"我们在这",imageOffset: {width:0,height:3},position:{lat:32.62355,lng:116.965864}}
+        ];
+        for(var index = 0; index < markers.length; index++ ){
+            var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+            var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+                imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+            })});
+            var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+            var opts = {
+                width: 200,
+                title: markers[index].title,
+                enableMessage: false
+            };
+            var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+            marker.setLabel(label);
+            addClickHandler(marker,infoWindow);
+            map.addOverlay(marker);
+        };
+    }
+    //向地图添加控件
+    function addMapControl(){
+        var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+        scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+        map.addControl(scaleControl);
+        var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:1});
+        map.addControl(navControl);
+        var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+        map.addControl(overviewControl);
+    }
+    var map;
+    initMap();
 </script>
 <!--<script src="js/scroll.js"></script>-->
 </body>

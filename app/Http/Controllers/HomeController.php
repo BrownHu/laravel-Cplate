@@ -30,32 +30,42 @@ class HomeController extends Controller
 
     /*产品展示*/
     public function product(){
-        return view('home.product')->with('topic','产品展示');
+        $topic=(['Cname'=>'产品展示','Ename'=>'Product Show','url'=>'product']);
+        return view('home.product',$topic);
     }
     /*客户案例*/
     public function customer(){
+        $topic=(['Cname'=>'客户案例','Ename'=>'Customer Case','url'=>'customer']);
 
-        return view('home.customer')->with('topic','客户案例');
+        return view('home.customer',$topic);
     }
     /*服务中心*/
     public function service(){
-        return view('home.service')->with('topic','服务中心');
+        $topic=(['Cname'=>'服务中心','Ename'=>'Service Center','url'=>'servce']);
+
+        return view('home.service',$topic);
     }
     /*新闻动态*/
     public function news(){
-        return view('home.news')->with('topic',"新闻动态");
+        $topic=(['Cname'=>'新闻动态','Ename'=>'News Center','url'=>'news']);
+
+        return view('home.news',$topic);
     }
     /*关于我们*/
     public function about(){
-        return view('home.about')->with('topic','关于我们');
+        $topic=(['Cname'=>'关于我们','Ename'=>'About Us','url'=>'employ']);
+        return view('home.about',$topic);
     }
     /*招贤纳士*/
     public function employ(){
-        return view('home.employ')->with('topic',"招贤纳士");
+        $topic=(['Cname'=>'招贤纳士','Ename'=>'Employment','url'=>'employ']);
+        return view('home.employ',$topic);
     }
-
-
-
+    /*解决方案*/
+    public function solution(){
+        $topic=(['Cname'=>'解决方案','Ename'=>'Solution Case','url'=>'solution']);
+        return view('home.solution',$topic) ;
+    }
 
 
     public function getCurrentMethod()

@@ -157,7 +157,7 @@
                 <a href="">
                     <div class="am-u-lg-5">
                         <div class="hb-news-img">
-                            <img src="../img/news1.png"></img>
+                            <img src="../img/news1.png">
                         </div>
                     </div>
                 </a>
