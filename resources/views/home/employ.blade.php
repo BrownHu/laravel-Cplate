@@ -1,4 +1,14 @@
 @extends('home.common.layout')
+@section('menu')
+    <li><a href="{{url('solution')}}">解决方案</a></li>
+    <li><a href="{{url('product')}}">产品展示 </a></li>
+    <li><a href="{{url('customer')}}">客户案例 </a></li>
+    <li><a href="{{url('service')}}">服务中心 </a></li>
+    <li><a href="{{url('news')}}">新闻动态 </a></li>
+    <li><a href="{{url('about')}}">关于我们</a></li>
+    <li class="hb-menu-active"><a href="{{url('employ')}}">招贤纳士 </a></li>
+
+@endsection
 
 @section('topic')
     @include('home.common.topic')

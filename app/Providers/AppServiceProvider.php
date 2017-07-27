@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Nav;
+use App\Touch;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +16,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+
+//        view()->share('me', 'hubing');
+        $navList=Nav::all()->toArray();
+        $footerTouch=Touch::first()->toArray();
+        view()->share('allList',$navList);
+        view()->share('touchList',$footerTouch);
+
     }
 
     /**

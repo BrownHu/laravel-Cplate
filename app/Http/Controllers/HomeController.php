@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Nav;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
 //        $this->middleware('auth');
+
         $AllTopic=["product"=>"产品展示","customer"=>"客户案例","service"=>"服务中心","news"=>"新闻中心","about"=>"关于我们",'employ'=>"招贤纳士"];
     }
 
@@ -30,44 +32,46 @@ class HomeController extends Controller
 
     /*产品展示*/
     public function product(){
-        $topic=(['Cname'=>'产品展示','Ename'=>'Product Show','url'=>'product']);
-        return view('home.product',$topic);
+        $topic=$this->getNav($this->getCurrentMethod());
+        return view('home.product')->with('topic',$topic[0]);
     }
     /*客户案例*/
     public function customer(){
-        $topic=(['Cname'=>'客户案例','Ename'=>'Customer Case','url'=>'customer']);
-
-        return view('home.customer',$topic);
+        $topic=$this->getNav($this->getCurrentMethod());
+        return view('home.customer')->with('topic',$topic[0]);
     }
     /*服务中心*/
     public function service(){
-        $topic=(['Cname'=>'服务中心','Ename'=>'Service Center','url'=>'servce']);
+        $topic=$this->getNav($this->getCurrentMethod());
 
-        return view('home.service',$topic);
+        return view('home.service')->with('topic',$topic[0]);
     }
     /*新闻动态*/
     public function news(){
-        $topic=(['Cname'=>'新闻动态','Ename'=>'News Center','url'=>'news']);
+        $topic=$this->getNav($this->getCurrentMethod());
 
-        return view('home.news',$topic);
+        return view('home.news')->with('topic',$topic[0]);
     }
     /*关于我们*/
     public function about(){
-        $topic=(['Cname'=>'关于我们','Ename'=>'About Us','url'=>'employ']);
-        return view('home.about',$topic);
+        $topic=$this->getNav($this->getCurrentMethod());
+        return view('home.about')->with('topic',$topic[0]);
     }
     /*招贤纳士*/
     public function employ(){
-        $topic=(['Cname'=>'招贤纳士','Ename'=>'Employment','url'=>'employ']);
-        return view('home.employ',$topic);
+        $topic=$this->getNav($this->getCurrentMethod());
+        return view('home.employ')->with('topic',$topic[0]);
     }
     /*解决方案*/
     public function solution(){
-        $topic=(['Cname'=>'解决方案','Ename'=>'Solution Case','url'=>'solution']);
-        return view('home.solution',$topic) ;
+        $topic=$this->getNav($this->getCurrentMethod());
+        return view('home.solution')->with('topic',$topic[0]) ;
     }
-
-
+    public function   getNav($ename){
+        return  Nav::where('url','=',$ename)->get();
+    }
+    public function demo(){
+    }
     public function getCurrentMethod()
     {
         $action = Route::current()->getActionName();

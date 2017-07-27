@@ -36,3 +36,4 @@ Route::get('test',function (){
 //            $topic=(['chzn'=>'解决方案','english'=>'Solution Case']);
 //            dd($topic);
 });
+Route::get('demo','HomeController@demo');
