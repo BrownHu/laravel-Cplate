@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Touch;
+use App\Card;
+use App\Staff;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +12,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class  TouchController extends Controller
+class StaffController extends Controller
 {
     use ModelForm;
 
@@ -71,21 +72,17 @@ class  TouchController extends Controller
      */
     protected function grid()
     {
+        return Admin::grid(Staff::class, function (Grid $grid) {
 
-        return Admin::grid(Touch::class, function (Grid $grid) {
-            $grid->disableCreation();
-            $grid->address('地址');
-            $grid->actions(function (Grid\Displayers\Actions $actions) {
-                if ($actions->getKey() == 1) {
-                    $actions->disableDelete();
-                }
+            $grid->id('ID')->sortable();
+            $grid->name('姓名');
+            $grid->column('phone.phone');
+            $grid->card('卡数')->value(function ($card){
+                $count=count($card);
+                return $count;
             });
-            $grid->mobile('手机号码');
-            $grid->fax('传真');
-            $grid->email('邮箱');
-            $grid->fixphone('固定电话');
-
         });
+
     }
 
     /**
@@ -95,15 +92,19 @@ class  TouchController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Touch::class, function (Form $form) {
+        return Admin::form(Staff::class, function (Form $form) {
+            $form->display('id', 'ID');
+            $form->text('name','姓名')->rules('required');
+            $form->image('head_img','头像');
+            $form->editor('body','正文');
 
-//            $form->display('id', 'ID');
-            $form->text('address','地址');
-            $form->mobile('mobile','手机号码');
-            $form->text('fax','传真');
-            $form->email('email','邮箱');
-            $form->text('fixphone','固定电话');
+//            $form->file('doc')->rules('mines:doc|required');
+//            $form->map('116.966942','32.619657', 'head_img')->useTencentMap();
 
+
+
+//            $form->display('created_at', 'Created At');
+//            $form->display('updated_at', 'Updated At');
         });
     }
 }

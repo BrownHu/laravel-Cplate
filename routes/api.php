@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Staff;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+Route::group([],function (){
+    Route::get('users',function(Request $request){
+
+        $q = $request->get('q');
+
+        return Staff::where('name', 'like', "%$q%")->paginate(null, ['id', 'name as text']);
+
+    });
+});

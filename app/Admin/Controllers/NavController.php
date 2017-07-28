@@ -91,8 +91,13 @@ class NavController extends Controller
                 return "default";
             });
             $grid->filter(function ($filter) {
+                    $filter->useModal();
+            });
+            $grid->rows(function ($row){
+                        if ($row->id>3){
+                            $row->style('color:red');
 
-                // 设置字段的范围查询的过滤
+                        }
             });
 
         });

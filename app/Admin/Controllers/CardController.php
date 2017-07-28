@@ -2,8 +2,9 @@
 
 namespace App\Admin\Controllers;
 
-use App\Touch;
+use App\Card;
 
+use App\Staff;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -11,7 +12,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class  TouchController extends Controller
+class CardController extends Controller
 {
     use ModelForm;
 
@@ -71,20 +72,13 @@ class  TouchController extends Controller
      */
     protected function grid()
     {
+        return Admin::grid(Card::class, function (Grid $grid) {
 
-        return Admin::grid(Touch::class, function (Grid $grid) {
-            $grid->disableCreation();
-            $grid->address('地址');
-            $grid->actions(function (Grid\Displayers\Actions $actions) {
-                if ($actions->getKey() == 1) {
-                    $actions->disableDelete();
-                }
-            });
-            $grid->mobile('手机号码');
-            $grid->fax('传真');
-            $grid->email('邮箱');
-            $grid->fixphone('固定电话');
-
+            $grid->id('ID')->sortable();
+            $grid->cardnumber('卡号');
+            $grid->bank('开卡银行');
+            $grid->created_at();
+            $grid->updated_at();
         });
     }
 
@@ -95,15 +89,21 @@ class  TouchController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Touch::class, function (Form $form) {
+        return Admin::form(Card::class, function (Form $form) {
 
-//            $form->display('id', 'ID');
-            $form->text('address','地址');
-            $form->mobile('mobile','手机号码');
-            $form->text('fax','传真');
-            $form->email('email','邮箱');
-            $form->text('fixphone','固定电话');
+            $form->display('id', 'ID');
+            $form->text('cardnumber','卡号');
+            $form->select('staff_id')->options(function ($id) {
+                $user = Staff::find($id);
 
+                if ($user) {
+                    return [$user->id => $user->name];
+                }
+            })->ajax('/api/users');
+
+            $form->text('bank','开卡银行')->rules('required');
+            $form->display('created_at', 'Created At');
+            $form->display('updated_at', 'Updated At');
         });
     }
 }

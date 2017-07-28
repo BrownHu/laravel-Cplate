@@ -11,6 +11,7 @@
 |
 */
 use App\Menu;
+use Intervention\Image\Facades\Image;
 
 Route::get('/', function () {
     return view('home.index');
@@ -30,10 +31,26 @@ Route::group([],function (){
     Route::get('product',"HomeController@product");
 });
 
+/*测试路由ignore*/
+
 Route::get('test',function (){
-
-
-//            $topic=(['chzn'=>'解决方案','english'=>'Solution Case']);
-//            dd($topic);
+    dd(asset('sf').storage_path());
+    $st=\App\Staff::find(1)->phone->number;
+    dd($st);
+     return view('demo');
 });
-Route::get('demo','HomeController@demo');
+
+Route::get('user/getHeadImg/{filename?}',function ( $filename){
+
+    $add=storage_path().'/app/admin/image/'.$filename;
+    try {
+        $img = Image::make($add);
+    }catch(Exception $e){
+        return  $e->getMessage();
+    }
+    return $img->response('jpg');
+});
+
+Route::get('inform',function(){
+    return view('home.solutionin');
+});

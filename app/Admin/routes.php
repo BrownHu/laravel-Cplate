@@ -12,5 +12,8 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('nav',NavController::class);
     $router->resource('touch',TouchController::class);
+    $router->resource('staff',StaffController::class);
+    $router->resource('phone',PhoneController::class);
+    $router->resource('card',CardController::class);
 
 });

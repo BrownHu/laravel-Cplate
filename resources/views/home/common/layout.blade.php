@@ -38,7 +38,7 @@
 </header>
 @yield('topic')
 @yield('content')
-@yield('solution')
+@yield('solutionin')
 @yield('customer')
 @yield('product')
 @yield('solution')
@@ -108,6 +108,8 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <!--<![endif]-->
 <script src="{{asset('js/amazeui.min.js')}}"></script>
+<script src="{{asset('js/meiqia.js')}}"></script>
+
 @stack('script')
 <!--<script src="js/scroll.js"></script>-->
 </body>
