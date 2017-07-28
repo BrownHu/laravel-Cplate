@@ -75,7 +75,7 @@
             <span>办公环境</span>
             <p>Office Space</p>
         </div>
-        响应式修改，页面完整
+
         <div class="office-pic am-g">
             <div class="am-u-lg-6 am-u-sm-12">
                 <img src="../img/space-1.png" class="am-img-responsive" >

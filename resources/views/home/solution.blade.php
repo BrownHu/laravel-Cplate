@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class=" am-u-sm-8 am-list-main">
-                                    <h3 class="am-list-item-hd"><a href="#" class="">优悦解决方案</a></h3>
+                                    <h3 class="am-list-item-hd"><a href="{{url('solutionin')}}" class="">优悦解决方案</a></h3>
 
                                     <div class="am-list-item-text">华天公路货运管理系统是华天软件为物流货运企业全力打造的一套物流网络信息化的实在营运解决方案，通过６年的不断积累，汲取数十家物流企业的实战经验，以客户为中心，以业务为纽带，为车辆调度，仓库管理，装车发货，分拣中心，卸货提货，运单跟踪</div>
 

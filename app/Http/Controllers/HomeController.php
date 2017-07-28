@@ -78,4 +78,8 @@ class HomeController extends Controller
         list($class,$method)= explode('@', $action);
         return $method;
     }
+    public function solutionin(Request $request){
+
+        return view('home.solutionin');
+    }
 }

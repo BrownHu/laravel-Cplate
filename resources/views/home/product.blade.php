@@ -22,7 +22,7 @@
             </div>
             <div class="about-address">
                 <p><i class="am-icon-dribbble"></i>查看地址</p>
-                <p><a href="">http://www.hwshop.com</a></p>
+                <p><a href="http://blog.crazycode.net.cn">http://blog.crazycode.net.cn</a></p>
             </div>
             <div class="about-introduce">
                 <p><i class="am-icon-tasks"></i>详情介绍</p>
@@ -49,7 +49,7 @@
             </div>
             <div class="about-address">
                 <p><i class="am-icon-dribbble"></i>查看地址</p>
-                <p><a href="">http://www.hwshop.com</a></p>
+                <p><a href="http://blog.crazycode.net.cn">http://blog.crazycode.net.cn</a></p>
             </div>
             <div class="about-introduce">
                 <p><i class="am-icon-tasks"></i>详情介绍</p>
@@ -67,7 +67,7 @@
             </div>
             <div class="about-address">
                 <p><i class="am-icon-dribbble"></i>查看地址</p>
-                <p><a href="">http://www.hwshop.com</a></p>
+                <p><a href="http://blog.crazycode.net.cn">http://blog.crazycode.net.cn</a></p>
             </div>
             <div class="about-introduce">
                 <p><i class="am-icon-tasks"></i>详情介绍</p>

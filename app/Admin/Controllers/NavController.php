@@ -80,9 +80,7 @@ class NavController extends Controller
             $grid->id('ID')->sortable();
             $grid->Cname('导航中文名');
             $grid->Ename('导航英文名');
-            $grid->url('链接')->value(function ($url){
-                return "<a href='$url'>$url</a>";
-            });
+            $grid->url('链接');
             $grid->sort('排序')->sortable();
             $grid->show('是否展示')->value(function ($show){
                 return  $show? '是':'否' ;
@@ -93,12 +91,12 @@ class NavController extends Controller
             $grid->filter(function ($filter) {
                     $filter->useModal();
             });
-            $grid->rows(function ($row){
-                        if ($row->id>3){
-                            $row->style('color:red');
-
-                        }
-            });
+//            $grid->rows(function ($row){
+//                        if ($row->id>3){
+//                            $row->style('color:red');
+//
+//                        }
+//            });
 
         });
     }

@@ -29,6 +29,7 @@ Route::group([],function (){
     Route::get('news',"HomeController@news");
     Route::get('employ',"HomeController@employ");
     Route::get('product',"HomeController@product");
+    Route::get('solutionin{id?}','HomeController@solutionin');
 });
 
 /*测试路由ignore*/
