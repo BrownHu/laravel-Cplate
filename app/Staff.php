@@ -14,4 +14,12 @@ class Staff extends Model
     public function card(){
         return $this->hasMany(Card::class,'staff_id','id');
     }
+    public function setHeadImgAttribute($picture){
+            if (is_array($picture)){
+                $this->attributes['head_img'] = json_encode($picture);
+            }
+    }
+//    public function getHeadImgAttribute($picture){
+//           return  json_decode($picture,true);
+//    }
 }

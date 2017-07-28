@@ -112,4 +112,10 @@ class HomeController extends Controller
             $content->row((new Box('Table', new Table($headers, $rows)))->style('info')->solid());
         });
     }
+    public function  jiji(){
+        return <<<SCRIPT
+console.log('hello world');
+SCRIPT;
+
+    }
 }

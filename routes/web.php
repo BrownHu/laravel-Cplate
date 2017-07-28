@@ -41,16 +41,16 @@ Route::get('test',function (){
      return view('demo');
 });
 
-Route::get('user/getHeadImg/{filename?}',function ( $filename){
+Route::get('getimg/{filename}',function ($filename){
 
     $add=storage_path().'/app/admin/image/'.$filename;
     try {
-        $img = Image::make($add);
+        $img = Image::make($add)->resize(100,100);
     }catch(Exception $e){
         return  $e->getMessage();
     }
     return $img->response('jpg');
-});
+})->name('getpic');
 
 Route::get('inform',function(){
     return view('home.solutionin');
